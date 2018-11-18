@@ -3,19 +3,36 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: arleyzhang
 subtitle:
 description:
-author: John Doe
-language:
+author: arleyzhang
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://arleyzhang.github.io
 root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+#permalink: :year/:month/:day/:title/
+permalink: articles/:abbrlink/
+#permalink: articles/:translate_title.html
+permalink_defaults: 
+
+# abbrlink config
+abbrlink:
+  alg: crc32  #support crc16(default) and crc32
+  rep: hex    #support dec(default) and hex
+  
+  
+#translate_title:
+#  translate_way: google  # google,youdao,baidu_with_appid,baidu_no_appid
+#  youdao_api_key: '' # Your youdao_api_key
+#  youdao_keyfrom: # Your youdao_keyfrom
+#  is_need_proxy: false     # true | false
+#  proxy_url: http://localhost:8008 # Your proxy_url
+#  baidu_appid: '' # Your baidu_appid
+#  baidu_appkey: '' # Your baidu_appkey
 
 # Directory
 source_dir: source
@@ -26,6 +43,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - README.md
+  - google*.html
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -34,7 +53,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -66,13 +85,35 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 15
 pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
+
+# search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+  
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    src: custom_mathjax_source
+    config:
+      # MathJax config
+  katex:
+    css: custom_css_source
+    js: custom_js_source # not used
+    config:
+      # KaTeX config
+      
+
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -80,3 +121,12 @@ deploy:
   type: git
   repo: https://github.com/arleyzhang/arleyzhang.github.io.git
   branch: master
+
+# sitemap
+sitemap: 
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
+
+# Hexo-all-minifier
+#all_minifier: true

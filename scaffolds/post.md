@@ -1,5 +1,11 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+categories: 
+tags: 
+copyright: true
+top: 0
+mathjax: true
+description: 
+password: 
 ---
